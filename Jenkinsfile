@@ -26,7 +26,7 @@ pipeline {
             }
             steps {
                 sh 'chmod +x mvnw'
-                sh './mvnw package -Dmaven.repo.local=.m2 -DskipTests'
+                sh './mvnw package -Dmaven.repo.local=.m2'
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
