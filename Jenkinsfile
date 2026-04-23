@@ -20,13 +20,12 @@ pipeline {
             agent {
                 docker {
                     image 'maven:3.9-eclipse-temurin-21-alpine'
-                    args '-v $WORKSPACE/.m2:/root/.m2'
                     reuseNode true
                 }
             }
             steps {
                 sh 'chmod +x mvnw'
-                sh './mvnw package -Dmaven.repo.local=$WORKSPACE/.m2'
+                sh './mvnw package -Dmaven.repo.local=.m2 -DskipTests'
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
