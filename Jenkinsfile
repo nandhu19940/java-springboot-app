@@ -70,15 +70,9 @@ pipeline {
     post {
         success {
             echo "Pipeline succeeded. ${IMAGE_NAME}:${BUILD_NUMBER} is live in production."
-            mail to: 'nandha008kumar@gmail.com',
-                 subject: "SUCCESS: ${IMAGE_NAME} build ${BUILD_NUMBER}",
-                 body: "Build ${BUILD_NUMBER} deployed successfully to production.\nCheck Jenkins: ${BUILD_URL}"
         }
         failure {
             echo "Pipeline failed at build ${BUILD_NUMBER}."
-            mail to: 'nandha008kumar@gmail.com',
-                 subject: "FAILED: ${IMAGE_NAME} build ${BUILD_NUMBER}",
-                 body: "Build ${BUILD_NUMBER} failed.\nCheck Jenkins: ${BUILD_URL}"
         }
     }
 }
