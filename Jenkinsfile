@@ -25,6 +25,7 @@ pipeline {
                 }
             }
             steps {
+                sh 'chmod +x mvnw'
                 sh './mvnw package'
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
