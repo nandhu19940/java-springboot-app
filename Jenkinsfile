@@ -18,7 +18,7 @@ pipeline {
 
         stage('Build and Test') {
             agent {
-                any {
+                docker {
                     image 'maven:3.9-eclipse-temurin-21-alpine'
                     args '-v /root/.m2:/root/.m2'
                     reuseNode true
