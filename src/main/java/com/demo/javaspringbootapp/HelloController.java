@@ -8,7 +8,7 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello() {
-        return "Hello from Java Spring Boot - CI/CD Pipeline is working 2026 learning Devops Java pipeline!";
+        return "Hello from Java Spring Boot - CI/CD Pipeline is working 2026/May-2-2026 learning Devops Java pipeline!";
     }
 
 }
