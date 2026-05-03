@@ -7,6 +7,7 @@ pipeline {
         PROD_PORT = '9092'
         STAGING_CONTAINER = 'springboot-staging'
         PROD_CONTAINER = 'springboot-prod'
+        TIMEOUT = '10'
     }
 
     stages {
@@ -52,8 +53,9 @@ pipeline {
 
         stage('Approval') {
             steps {
-                input message: 'Staging looks good? Approve to deploy to Production.',
-                      ok: 'Deploy to Production'
+                timeout(time: 2, unit: 'MINUTES') {
+        input message: 'Staging looks good? Approve to deploy to Production.', ok: 'Deploy to Production'
+    }
             }
         }
 
