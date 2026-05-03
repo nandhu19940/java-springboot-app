@@ -13,8 +13,14 @@ FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /app
 
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
 COPY --from=builder /app/target/*.jar app.jar
 
-EXPOSE 9090
+RUN chown appuser:appgroup app.jar
 
-ENTRYPOINT ["java", "-jar", "app.jar", "--spring.profiles.active=prod"]
+USER appuser
+
+EXPOSE 9090
+ENV SPRING_PROFILES_ACTIVE=prod
+ENTRYPOINT ["java", "-jar", "app.jar"]
