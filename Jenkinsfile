@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent
 
     environment {
         IMAGE_NAME = 'java-springboot-app'
@@ -31,6 +31,19 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
+
+        stage('Parallel Checks') {
+    parallel failFast: true {
+        stage('Code Quality') 
+        { 
+            steps {echo "Running code quality checks..."} 
+            }
+        stage('Security Scan') 
+        { 
+            steps {echo "Running security vulnerability scan..."}
+         }
+    }
+}
 
         stage('Build Docker Image') {
             steps {
