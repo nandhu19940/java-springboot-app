@@ -1,5 +1,5 @@
 pipeline {
-    agent
+    agent any
 
     environment {
         IMAGE_NAME = 'java-springboot-app'
