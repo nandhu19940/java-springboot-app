@@ -33,7 +33,8 @@ pipeline {
         }
 
         stage('Parallel Checks') {
-    parallel failFast: true {
+    failFast: true 
+    parallel {
         stage('Code Quality') 
         steps { 
              echo "Running code quality checks..."
