@@ -32,17 +32,19 @@ pipeline {
             }
         }
 
-        
+        stage('Parallel checks'){
     failFast: true 
     parallel {
-        stage('Code Quality') 
+        stage('Code Quality') {
         steps { 
              echo "Running code quality checks..."
             }
-        stage('Security Scan') 
+        }
+        stage('Security Scan') {
         steps { 
              echo "Running security vulnerability scan..."
          }
+        }
     }
 }
 
