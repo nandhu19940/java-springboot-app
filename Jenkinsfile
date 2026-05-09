@@ -32,8 +32,8 @@ pipeline {
             }
         }
 
-        stage('Parallel checks'){
-    failFast: true 
+        stage('Parallel checks') {
+    failFast true 
     parallel {
         stage('Code Quality') {
         steps { 
