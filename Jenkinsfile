@@ -62,7 +62,7 @@ pipeline {
                 sh """
                     docker stop ${STAGING_CONTAINER} || true
                     docker rm ${STAGING_CONTAINER} || true
-                    docker run -d -p ${STAGING_PORT}:9090 --name ${STAGING_CONTAINER} ${IMAGE_NAME}:${BUILD_NUMBER}
+                    docker run -d -p ${STAGING_PORT}:8585 --name ${STAGING_CONTAINER} ${IMAGE_NAME}:${BUILD_NUMBER}
                 """
             }
         }
@@ -80,7 +80,7 @@ pipeline {
                 sh """
                     docker stop ${PROD_CONTAINER} || true
                     docker rm ${PROD_CONTAINER} || true
-                    docker run -d -p ${PROD_PORT}:9090 --name ${PROD_CONTAINER} ${IMAGE_NAME}:${BUILD_NUMBER}
+                    docker run -d -p ${PROD_PORT}:8585 --name ${PROD_CONTAINER} ${IMAGE_NAME}:${BUILD_NUMBER}
                 """
             }
         }
