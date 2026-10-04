@@ -2,4 +2,4 @@ spring:
   application:
     name: java-springboot-app
 server:
-  port: 9090
+  port: 8585
