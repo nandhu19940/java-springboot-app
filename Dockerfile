@@ -21,6 +21,6 @@ RUN chown appuser:appgroup app.jar
 
 USER appuser
 
-EXPOSE 9090
+EXPOSE 8585
 ENV SPRING_PROFILES_ACTIVE=prod
 ENTRYPOINT ["java", "-jar", "app.jar"]
